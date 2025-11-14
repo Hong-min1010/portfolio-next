@@ -1,21 +1,33 @@
 "use client";
 
 import Link from "next/link";
+import React from "react";
 
 export type Project = {
   id: string;
   title: string;
   href?: string;
+  thumbnail?: React.ReactNode;
+  body?: React.ReactNode;
 };
 
 type Props = {
   data: Project;
-  active?: boolean;     // 스타일 강조(테두리/그림자/CTA 애니메이션)
-  showMeta?: boolean;   // ✅ 제목/요약/버튼 노출 여부
+  active?: boolean;
+  showMeta?: boolean;
   className?: string;
+  thumbnail?: React.ReactNode;
+  body?: React.ReactNode;
 };
 
-export default function ProjectInfo({ data, active = false, showMeta = true, className = "" }: Props) {
+export default function ProjectInfo({
+  data,
+  active = false,
+  showMeta = true,
+  className = "",
+  thumbnail,
+  body,
+}: Props) {
   const { title, href } = data;
 
   return (
@@ -31,13 +43,18 @@ export default function ProjectInfo({ data, active = false, showMeta = true, cla
           : "0 16px 32px rgba(0,0,0,0.12)",
       }}
     >
-      {/* 상단 바 */}
       <div className="px-4 pt-3 pb-2">
         <div className="flex items-center gap-3">
-          <div className="h-8 w-8 rounded-md bg-neutral-200 flex items-center justify-center text-[10px] text-neutral-600">
-            PJ<br/>IMG
+          <div className="h-8 w-8 rounded-md bg-neutral-200 flex items-center justify-center text-[10px] text-neutral-600 p-1">
+            {thumbnail ?? (
+              <>
+                PJ
+                <br />
+                IMG
+              </>
+            )}
           </div>
-          {/* ✅ 제목은 중앙 카드에서만 보임 */}
+
           {showMeta && (
             <div className="text-sm font-medium text-neutral-800 truncate">
               {title}
@@ -46,14 +63,12 @@ export default function ProjectInfo({ data, active = false, showMeta = true, cla
         </div>
       </div>
 
-      {/* 본문 영역(프레임은 유지) */}
       <div className="px-4">
-        <div className="h-[290px] rounded-xl bg-neutral-100 border flex items-center justify-center text-neutral-500 text-sm">
-          Introduce Project
+        <div className="h-[290px] rounded-xl bg-neutral-100 border flex items-center justify-center text-neutral-500 text-sm overflow-hidden">
+          {body ?? "Introduce Project"}
         </div>
       </div>
 
-      {/* ✅ 버튼도 중앙 카드에서만 */}
       {showMeta && (
         <div className="absolute inset-x-0 bottom-0 p-4">
           <div className="flex justify-end">
@@ -75,7 +90,6 @@ export default function ProjectInfo({ data, active = false, showMeta = true, cla
         </div>
       )}
 
-      {/* 테두리 강조 */}
       <div
         className="pointer-events-none absolute inset-0 rounded-3xl transition-[box-shadow] duration-300"
         style={{

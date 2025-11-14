@@ -20,7 +20,6 @@ export default function ContactPopover({
   const btnRef = useRef<HTMLButtonElement | null>(null);
   const popRef = useRef<HTMLDivElement | null>(null);
 
-  // 바깥 클릭/ESC 닫기
   useEffect(() => {
     function onClick(e: MouseEvent) {
       if (!open) return;

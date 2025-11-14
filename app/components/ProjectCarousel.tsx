@@ -8,9 +8,7 @@ type Props = {
   spread?: number;
   offsetX?: number;
   offsetY?: number;
-  /** 스택 중앙(50%)에서 아래로 내리는 거리(px) — 카드 바로 밑에 붙이려면 210~235 사이 추천 */
   buttonsOffsetY?: number;
-  /** 좌/우 화살표 사이 간격(px) */
   buttonsGap?: number;
 };
 
@@ -20,13 +18,12 @@ export default function ProjectCarousel({
   spread = 140,
   offsetX = 260,
   offsetY = 120,
-  buttonsOffsetY = 50, // ← 사진처럼 가깝게
-  buttonsGap = 120,      // ← 버튼 간격
+  buttonsOffsetY = 50,
+  buttonsGap = 120,
 }: Props) {
   const n = projects.length;
   const [active, setActive] = useState(0);
 
-  // --- autoplay (리셋/재개 보장)
   const pausedRef = useRef(false);
   const timerRef = useRef<number | null>(null);
   const clearTimer = () => { if (timerRef.current) { clearTimeout(timerRef.current); timerRef.current = null; } };
@@ -43,7 +40,6 @@ export default function ProjectCarousel({
   const goPrev = () => { setActive(a => (a - 1 + n) % n); startTimer(); };
   const goNext = () => { setActive(a => (a + 1) % n); startTimer(); };
 
-  // --- layout: 부채꼴 + depth
   const mid = (n - 1) / 2;
   const shifts = useMemo(() => Array.from({ length: n }, (_, i) => (i - mid) * spread), [n, spread, mid]);
   const angles = useMemo(() => Array.from({ length: n }, (_, i) => (i - mid) * 7), [n, mid]);
@@ -63,7 +59,7 @@ export default function ProjectCarousel({
           const isActive = i === active;
           const x = shifts[i];
           const angle = isActive ? 0 : angles[i];
-          const opacity = isActive ? 1 : opacities[i];
+          // const opacity = isActive ? 1 : opacities[i];
           const z = isActive ? 60 : 10 + i;
           const scale = isActive ? 1.10 : 0.92;
 
@@ -76,12 +72,18 @@ export default function ProjectCarousel({
               style={{
                 transform: `translate(calc(-50% + ${x}px), -50%) rotate(${angle}deg) scale(${scale})`,
                 zIndex: z,
-                opacity,
+                // opacity,
                 pointerEvents: "auto",
               }}
             >
               <div className={isActive ? "" : "pointer-events-none"}>
-                <ProjectInfo data={p} active={isActive} showMeta={isActive} />
+                <ProjectInfo
+                  data={p}
+                  active={isActive}
+                  showMeta={isActive}
+                  thumbnail={p.thumbnail}
+                  body={p.body}
+                />
               </div>
             </li>
           );
