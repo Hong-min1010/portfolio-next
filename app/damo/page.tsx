@@ -13,14 +13,14 @@ export default function Damo() {
         }
         troubles={[
           {
-            problem: <>자동 로그인 기능 구현 과정에서 <br /><span className="ml-14">AccessToken과 RefreshToken이 혼용되어 사용됨.</span></>,
-            solution: <>RefreshToken을 통해 AccessToken과 RefreshToken을 모두 <br /><span className="ml-14">재발급하는 방식으로 인증 구조 개선.</span></>,
-            result: <>토큰 탈취 위험이 감소하고, RefreshToken의 주기적 재발급을 <br /><span className="ml-14">통해 사용자 정보 보안성이 강화됨.</span></>,
+            problem: <>자동 로그인 기능 구현 과정에서 <br /><span className="ml-12">AccessToken과 RefreshToken이 혼용되어 사용됨.</span></>,
+            solution: <>RefreshToken을 통해 AccessToken과 RefreshToken을 모두 <br /><span className="ml-12">재발급하는 방식으로 인증 구조 개선.</span></>,
+            result: <>토큰 탈취 위험이 감소하고, RefreshToken의 주기적 재발급을 <br /><span className="mml-12">통해 사용자 정보 보안성이 강화됨.</span></>,
           },
           {
-            problem: <>카테고리 수정 페이지 진입 시, 사용자가 이전에 선택했던 <br /><span className="ml-14">카테고리가 순서대로 표시되지 않거나 누락되는 현상이 발생함.</span></>,
-            solution: <>await를 활용해 전체 카테고리 → 사용자 선택 카테고리 순으로 <br /><span className="ml-14">데이터를 직렬 처리.</span></>,
-            result: <> 비동기 로딩 문제로 인한 이전에 사용자가 선택했던 카테고리와 <br /><span className="ml-14">불일치 현상이 해결됨.</span></>,
+            problem: <>카테고리 수정 페이지 진입 시, 사용자가 이전에 선택했던 <br /><span className="ml-12">카테고리가 순서대로 표시되지 않거나 누락되는 현상이 발생함.</span></>,
+            solution: <>await를 활용해 전체 카테고리 → 사용자 선택 카테고리 순으로 <br /><span className="ml-12">데이터를 직렬 처리.</span></>,
+            result: <> 비동기 로딩 문제로 인한 이전에 사용자가 선택했던 카테고리와 <br /><span className="ml-12">불일치 현상이 해결됨.</span></>,
           },
         ]}
         drawbacks={
