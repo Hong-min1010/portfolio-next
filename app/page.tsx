@@ -1,6 +1,9 @@
+'use client'
+
 import Image from "next/image";
 import ProjectCarousel from "./components/ProjectCarousel";
 import { Project } from "./components/ProjectInfo";
+import { useEffect, useState } from "react";
 
 const projects: Project[] = [
   {
@@ -121,8 +124,52 @@ const projects: Project[] = [
 ];
 
 export default function Home() {
+  const [showNotice, setShowNotice] = useState(false);
+
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!sessionStorage.getItem("resolutionNoticeShown")) {
+      const id = requestAnimationFrame(() => setShowNotice(true));
+      return () => cancelAnimationFrame(id);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (showNotice) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+    return () => document.body.classList.remove("overflow-hidden");
+  }, [showNotice]);
+
+  const handleCloseNotice = () => {
+    sessionStorage.setItem("resolutionNoticeShown", "true");
+    setShowNotice(false);
+  };
+
   return (
     <section className="w-full overflow-x-clip">
+      {showNotice && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+          <div className="bg-white rounded-xl shadow-2xl p-6 w-[90%] max-w-md text-center">
+            <h2 className="text-lg md:text-xl font-bold text-gray-800 mb-2">화면 안내</h2>
+            <p className="text-sm text-gray-700 leading-relaxed mb-5">
+              이 포트폴리오는 데스크탑 환경에 최적화되어 있습니다.<br />
+              권장 해상도: <b>1920×1080</b> / <b>1440×1080</b>.<br />
+              현재 모바일에서도 감상하실 수 있게 수정중입니다.
+            </p>
+            <button
+              onClick={handleCloseNotice}
+              className="px-6 py-2 rounded-lg bg-blue-500 
+              hover:bg-blue-600 text-white font-semibold transition cursor-pointer"
+            >
+              확인
+            </button>
+          </div>
+        </div>
+      )}
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 min-h-[calc(100dvh-4rem)] flex items-center pt-28 md:pt-32 pb-20">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-32 md:gap-40 items-center">
           <div className="text-center md:text-left mb-20">
