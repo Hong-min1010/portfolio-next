@@ -94,7 +94,7 @@ export default function ProjectInfo({
         className="pointer-events-none absolute inset-0 rounded-3xl transition-[box-shadow] duration-300"
         style={{
           boxShadow: active
-            ? "inset 0 0 0 2px rgba(0,0,0,0.85)"
+            ? "inset 0 0 0 1px rgba(0,0,0,0.85)"
             : "inset 0 0 0 1px rgba(0,0,0,0.55)",
         }}
       />
