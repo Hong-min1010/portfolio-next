@@ -66,9 +66,10 @@ export default function ProjectCarousel({
           return (
             <li
               key={p.id}
+              onClick={() => setActive(i)}  
               onMouseEnter={() => { pausedRef.current = true; clearTimer(); }}
               onMouseLeave={() => { pausedRef.current = false; startTimer(); }}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-400 ease-out"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-400 ease-out cursor-pointer"
               style={{
                 transform: `translate(calc(-50% + ${x}px), -50%) rotate(${angle}deg) scale(${scale})`,
                 zIndex: z,

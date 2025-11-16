@@ -126,9 +126,9 @@ export default function Home() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 min-h-[calc(100dvh-4rem)] flex items-center pt-28 md:pt-32 pb-20">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-32 md:gap-40 items-center">
           <div className="text-center md:text-left mb-20">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-neutral-900">Projects</h2>
-            <p className="mt-4 text-neutral-600 text-base md:text-lg">Hover to pause.</p>
-            <p className="text-neutral-600 text-base md:text-lg">Use arrows or wait for auto-slide.</p>
+            <h2 className="text-4xl font-extrabold text-neutral-800">Projects</h2>
+            <p className="mt-4 text-neutral-600 text-base">Hover to pause.</p>
+            <p className="text-neutral-600 text-base">Use arrows or <br />wait for auto-slide.</p>
           </div>
 
           <div className="justify-self-center md:justify-self-end">
