@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="w-full h-full">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-clip`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-clip`}
       >
         <Header />
         <div className="w-full px-50 flex items-center justify-center pt-10 max-h-screen">

@@ -57,7 +57,7 @@ export default function ProjectReviewCard({
   }, [open]);
 
   return (
-    <div className="w-full max-w-5xl h-fit p-2 flex flex-col shadow-xl rounded-lg overflow-hidden border border-gray-200 bg-white">
+    <div className="w-full max-w-5xl h-fit p-2 flex flex-col shadow-xl rounded-lg mt-10 border border-gray-200 bg-white">
       <div className="w-full p-3 border-b bg-white flex items-center justify-between">
         <span className="text-blue-600 text-xl font-bold px-2">{title}</span>
         <div className="relative">
@@ -120,20 +120,20 @@ export default function ProjectReviewCard({
         {/* Architecture + Troubleshooting */}
         <div className="flex w-full h-full">
           {/* Architecture */}
-          <div className="w-1/2 h-full text-lg text-black border-r p-2">
+          <div className="w-1/2 h-full text-lg text-black  p-2">
             <div className="mb-2 font-medium">※ Architecture</div>
             <div className="w-full h-full overflow-auto">{architecture}</div>
           </div>
 
           {/* Troubleshooting */}
-          <div className="w-1/2 h-full p-2">
+          <div className="w-1/2 h-full p-2 border-l">
             <div className="text-lg text-black mb-2 font-medium">※ TroubleShooting</div>
             <div className="flex flex-col gap-5 overflow-auto">
               {troubles.map((item, idx) => (
-                <div key={idx} className="pt-2 flex flex-col gap-3">
-                  <div className="text-base text-red-600">• 문제 : {item.problem}</div>
-                  <div className="text-base text-green-600">• 해결 : {item.solution}</div>
-                  <div className="text-base text-black">• 결과 : {item.result}</div>
+                <div key={idx} className="flex flex-col gap-2">
+                  <div className="text-sm text-red-600 whitespace-pre-line">• 문제 : {item.problem}</div>
+                  <div className="text-sm text-green-600">• 해결 : {item.solution}</div>
+                  <div className="text-sm text-black leading-relaxed break-keep whitespace-pre-line">• 결과 : {item.result}</div>
                 </div>
               ))}
             </div>
@@ -144,8 +144,8 @@ export default function ProjectReviewCard({
         <div className="flex flex-col p-2 w-full h-full bg-white border-t">
           <div className="text-black text-lg font-medium">※ Project Review</div>
           <div className="flex flex-col w-full h-full gap-4 pt-2">
-            <div className="text-black text-base">
-              • 아쉬운점
+            <div className="text-black">
+              <div className="text-base">• 아쉬운점</div>
               <div className="mt-1 text-sm whitespace-pre-line">{drawbacks}</div>
             </div>
             <div className="text-black text-base">
@@ -156,21 +156,5 @@ export default function ProjectReviewCard({
         </div>
       </div>
     </div>
-  );
-}
-
-function ExternalIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4 opacity-70" fill="currentColor">
-      <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z" />
-      <path d="M5 5h6v2H7v10h10v-4h2v6H5V5z" />
-    </svg>
-  );
-}
-function ArrowUpRightIcon() {
-  return (
-    <svg viewBox="0 0 20 20" className="h-4 w-4" fill="currentColor">
-      <path d="M7.22 6.47a.75.75 0 011.06 0L13 11.19V7.75a.75.75 0 011.5 0v4.5a.75.75 0 01-.75.75h-4.5a.75.75 0 010-1.5h3.44L7.22 7.53a.75.75 0 010-1.06z" />
-    </svg>
   );
 }
