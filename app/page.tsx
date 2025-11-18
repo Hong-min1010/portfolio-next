@@ -4,6 +4,8 @@ import Image from "next/image";
 import ProjectCarousel from "./components/ProjectCarousel";
 import { Project } from "./components/ProjectInfo";
 import { useEffect, useState } from "react";
+import useIsMobile from "./hooks/useIsMobile";
+import { useRouter } from "next/navigation";
 
 const projects: Project[] = [
   {
@@ -124,8 +126,17 @@ const projects: Project[] = [
 ];
 
 export default function Home() {
-  const [showNotice, setShowNotice] = useState(false);
 
+  const [showNotice, setShowNotice] = useState(false);
+  const router = useRouter();
+  const { isDesktop, width } = useIsMobile();
+
+  useEffect(() => {
+    if (width === 0) return;
+    if (!isDesktop) {
+      router.replace("/damo");
+    }
+  }, [width, isDesktop, router]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -144,6 +155,10 @@ export default function Home() {
     return () => document.body.classList.remove("overflow-hidden");
   }, [showNotice]);
 
+  if (width === 0 || !isDesktop) {
+    return null;
+  }
+
   const handleCloseNotice = () => {
     sessionStorage.setItem("resolutionNoticeShown", "true");
     setShowNotice(false);
@@ -158,7 +173,7 @@ export default function Home() {
             <p className="text-sm text-gray-700 leading-relaxed mb-5">
               이 포트폴리오는 데스크탑 환경에 최적화되어 있습니다.<br />
               권장 해상도: <b>1920×1080</b> / <b>1440×1080</b>.<br />
-              현재 모바일에서도 감상하실 수 있게 수정중입니다.
+              모바일에서도 감상하실 수 있습니다.
             </p>
             <button
               onClick={handleCloseNotice}
@@ -170,9 +185,10 @@ export default function Home() {
           </div>
         </div>
       )}
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 min-h-[calc(100dvh-4rem)] flex items-center pt-28 md:pt-32 pb-20">
+      <div className=" mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 min-h-[calc(100dvh-4rem)] 
+          flex items-center pt-8 md:pt-10 pb-12 ">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-32 md:gap-40 items-center">
-          <div className="text-center md:text-left mb-20">
+          <div className="text-center md:text-left">
             <h2 className="text-4xl font-extrabold text-neutral-800">Projects</h2>
             <p className="mt-4 text-neutral-600 text-base">Hover to pause.</p>
             <p className="text-neutral-600 text-base">Use arrows or <br />wait for auto-slide.</p>

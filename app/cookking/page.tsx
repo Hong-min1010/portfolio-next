@@ -3,7 +3,7 @@ import ProjectReviewCard from "../components/ProjectReviewCard";
 
 export default function Cookking() {
   return (
-    <div className="w-full h-screen flex flex-row items-center justify-center pb-30">
+    <div className="w-full flex items-center justify-center">
       <ProjectReviewCard
         title="Cookking (레시피 추천 및 공유 서비스)"
         architecture={
@@ -13,14 +13,14 @@ export default function Cookking() {
         }
         troubles={[
           {
-            problem: <>인증번호 재전송을 눌러도 타이머가 초기화되지 않고 <br /><span className="ml-12">이전 남은 시간 그대로 유지됨.</span></>,
-            solution: <>타이머 제어를 부모에서 key값에 강제적으로 1을 더하여 <br /><span className="ml-12">“명시적으로” 수행하도록 변경.</span></>,
-            result: <>재전송 시 항상 타이머가 새로 시작되고, <br /><span className="ml-12">중복 타이머(메모리 누수) 제거.</span></>,
+            problem: <>인증번호 재전송을 눌러도 타이머가 초기화되지 않고 <span className="inline xl:block xl:ml-12">이전 남은 시간 그대로 유지됨.</span></>,
+            solution: <>타이머 제어를 부모에서 key값에 강제적으로 1을 더하여 <span className="inline xl:block xl:ml-12">“명시적으로” 수행하도록 변경.</span></>,
+            result: <>재전송 시 항상 타이머가 새로 시작되고, <span className="inline xl:block xl:ml-12">중복 타이머(메모리 누수) 제거.</span></>,
           },
           {
-            problem: <>게시글 북마크 버튼을 눌러도 마이페이지 북마크 리스트에 <br /><span className="ml-12">반영되지 않는 현상 발생.</span></>,
-            solution: <>BookmarkContext로 전역 상태를 제공하도록 설계하고, <br /><span className="ml-12">모든 관련 화면을 BookmarkProvider로 감싸 전역 관리.</span></>,
-            result: <>페이지 이동/새로고침에도 상태 일관성 확보, <br /><span className="ml-12">UI 불일치 및 깜빡임 감소.</span></>,
+            problem: <>게시글 북마크 버튼을 눌러도 마이페이지 북마크 리스트에 <span className="inline xl:block xl:ml-12">반영되지 않는 현상 발생.</span></>,
+            solution: <>BookmarkContext로 전역 상태를 제공하도록 설계하고, <span className="inline xl:block xl:ml-12">모든 관련 화면을 BookmarkProvider로 감싸 전역 관리.</span></>,
+            result: <>페이지 이동/새로고침에도 상태 일관성 확보, <span className="inline xl:block xl:ml-12">UI 불일치 및 깜빡임 감소.</span></>,
           },
         ]}
         drawbacks={

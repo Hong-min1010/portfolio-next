@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
-/* ---------- types ---------- */
 type TroubleItem = {
   problem: ReactNode;
   solution: ReactNode;
@@ -57,7 +56,7 @@ export default function ProjectReviewCard({
   }, [open]);
 
   return (
-    <div className="w-full max-w-5xl h-fit p-2 flex flex-col shadow-xl rounded-lg mt-10 border border-gray-200 bg-white">
+    <div className="w-full max-w-5xl h-fit p-2 flex flex-col shadow-xl rounded-lg border border-gray-200 bg-white mb-10">
       <div className="w-full p-3 border-b bg-white flex items-center justify-between">
         <span className="text-blue-600 text-xl font-bold px-2">{title}</span>
         <div className="relative">
@@ -116,19 +115,21 @@ export default function ProjectReviewCard({
         </div>
       </div>
 
-      <div className="flex flex-col w-full h-full">
+      <div className="flex flex-col w-full">
         {/* Architecture + Troubleshooting */}
-        <div className="flex w-full h-full">
+        <div className="flex flex-col md:flex-row w-full">
           {/* Architecture */}
-          <div className="w-1/2 h-full text-lg text-black  p-2">
+          <div className="w-full md:w-1/2 text-lg text-black p-2">
             <div className="mb-2 font-medium">※ Architecture</div>
-            <div className="w-full h-full overflow-auto">{architecture}</div>
+            <div className="w-full max-h-[420px] md:max-h-[480px] overflow-auto rounded-md">
+              {architecture}
+            </div>
           </div>
 
           {/* Troubleshooting */}
-          <div className="w-1/2 h-full p-2 border-l">
+          <div className="w-full md:w-1/2 p-2 border-t md:border-t-0 md:border-l">
             <div className="text-lg text-black mb-2 font-medium">※ TroubleShooting</div>
-            <div className="flex flex-col gap-5 overflow-auto">
+            <div className="flex flex-col gap-5 max-h-[420px] md:max-h-[480px] overflow-auto">
               {troubles.map((item, idx) => (
                 <div key={idx} className="flex flex-col gap-2">
                   <div className="text-sm text-red-600 whitespace-pre-line">• 문제 : {item.problem}</div>

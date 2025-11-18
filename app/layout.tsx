@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Script from "next/script";
+import LayoutClient from "./components/LayoutClient";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,18 +20,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="w-full h-full">
+    <html lang="en">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-clip`}
       >
         <Header />
-        <div className="w-full px-50 flex items-center justify-center pt-10 max-h-screen">
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-          />
+        <LayoutClient>
           {children}
-        </div>
+        </LayoutClient>
       </body>
     </html>
   );
