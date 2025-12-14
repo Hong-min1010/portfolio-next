@@ -15,7 +15,7 @@ const projects: Project[] = [
     thumbnail: (
       <Image
         src="/assets/Damo_PF.png"
-        alt="Damo 썸네일"
+        alt="Damo"
         width={32}
         height={32}
         className="object-cover"
@@ -44,7 +44,7 @@ const projects: Project[] = [
     thumbnail: (
       <Image
         src="/assets/Cookking_PF.png"
-        alt="Cookking 썸네일"
+        alt="Cookking"
         width={32}
         height={32}
         className="object-cover"
@@ -73,7 +73,7 @@ const projects: Project[] = [
     thumbnail: (
       <Image
         src="/assets/Traffic_PF.png"
-        alt="Traffic 썸네일"
+        alt="Traffic"
         width={32}
         height={32}
         className="object-cover"
@@ -102,7 +102,7 @@ const projects: Project[] = [
     thumbnail: (
       <Image
         src="/assets/Front_PF.png"
-        alt="Front Mission 썸네일"
+        alt="Front Mission"
         width={32}
         height={32}
         className="object-cover"
